@@ -19,7 +19,7 @@ The application includes:
 
 ## Architecture overview
 
-![REI Architecture](assets/architecture.svg)
+![REI Architecture](assets/archi.png)
 
 This architecture captures the full REC lifecycle: generation, issuance, transfer, verification, and retirement, with stakeholder roles and platform outputs connected through the REI system.
 
