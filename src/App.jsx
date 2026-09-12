@@ -25,7 +25,10 @@ import SettingsPage from './pages/app/Settings'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
-  useEffect(() => window.scrollTo(0, 0), [pathname])
+  // Block body: an implicit return would hand React a non-function "cleanup".
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
   return null
 }
 

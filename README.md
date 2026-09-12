@@ -46,7 +46,12 @@ The session persists across reloads, so deep links into `/app/...` survive a ref
 ## What's in it
 
 ### Public site
-- **Home** — hero, live alert count, animated generation-to-ledger visual, fraud primer, workflow, technology
+The marketing site is a light, mint-and-green design (RECGuard brand mark) with a working
+light/dark toggle in the header; the enterprise dashboard stays dark in either theme. All
+artwork is inline SVG — animated turbines, solar arrays, the certificate card and the
+blockchain mesh — so the page renders identically offline with no image assets to ship.
+
+- **Home** — hero with the generation-to-ledger scene and lifecycle overlay, live alert count, the four fraud challenges, the AI + blockchain solution grid, trust stats, use cases by stakeholder, and the closing CTA banner
 - **About REC** — what certificates are, why they matter, how fraud happens, why traceability is non-negotiable
 - **How It Works** — the eleven-step pipeline from generation to final decision
 - **Technology** — the four trust layers, reference architecture, model ensemble, ledger network
@@ -131,6 +136,7 @@ inseparable for a large share of viewers.
 | Charts | Recharts |
 | Icons | lucide-react |
 | Routing | React Router 6, with route-level role gates |
+| Theming | CSS custom-property tokens (`--c-*`) consumed as Tailwind colours, so one class works in both themes |
 | State | React Context (`src/data/store.jsx`) |
 
 ### Where a real backend would attach
@@ -162,8 +168,11 @@ src/
     ui.jsx                 stat tiles, tables, risk badges, dials, modals, toasts
     charts.jsx             validated palette + all chart forms
     Timeline.jsx           blockchain lifecycle timeline
+  components/
+    theme.jsx              light/dark provider + header toggle
   pages/
     public/                home, about, how it works, technology, verify, login
+      scenes.jsx           inline SVG artwork (hero, use cases, CTA banner)
     app/                   the nine dashboard modules + detail pages
   utils/report.js          CSV and audit-report generation
 ```

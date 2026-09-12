@@ -35,26 +35,26 @@ export default function VerifyPublic() {
 
   return (
     <div className="mx-auto max-w-4xl px-5 py-14 lg:py-20">
-      <p className="panel-title">Public verification</p>
-      <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-        Verify a <span className="text-gradient">certificate</span>
+      <p className="label">Public verification</p>
+      <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+        Verify a <span className="text-brand">certificate</span>
       </h1>
-      <p className="mt-4 max-w-2xl text-lg text-slate-400">
+      <p className="mt-4 max-w-2xl text-lg text-ink-2">
         Enter a certificate ID or blockchain transaction hash. Anyone can check authenticity,
         current owner, risk verdict and retirement status — no account required.
       </p>
 
-      <form onSubmit={run} className="glass mt-8 flex flex-col gap-3 p-4 sm:flex-row">
+      <form onSubmit={run} className="card mt-8 flex flex-col gap-3 p-4 sm:flex-row">
         <div className="relative flex-1">
-          <Search size={16} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+          <Search size={16} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-3" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="REC-2026-001 or 0x…"
-            className="input h-12 pl-10 font-mono"
+            className="field h-12 pl-10 font-mono"
           />
         </div>
-        <button className="btn-primary h-12 px-6" disabled={state === 'scanning'}>
+        <button className="btn-brand h-12 px-6" disabled={state === 'scanning'}>
           {state === 'scanning' ? (
             <>
               <Loader2 size={16} className="animate-spin" /> Checking ledger…
@@ -67,21 +67,21 @@ export default function VerifyPublic() {
         </button>
       </form>
 
-      <p className="mt-3 text-xs text-slate-500">
-        Try <button className="font-mono text-cyan-300" onClick={() => setQuery('REC-2026-001')}>REC-2026-001</button>
+      <p className="mt-3 text-xs text-ink-3">
+        Try <button className="font-mono text-brand-ink" onClick={() => setQuery('REC-2026-001')}>REC-2026-001</button>
         {' · '}
-        <button className="font-mono text-cyan-300" onClick={() => setQuery('REC-2026-041')}>REC-2026-041</button>
+        <button className="font-mono text-brand-ink" onClick={() => setQuery('REC-2026-041')}>REC-2026-041</button>
         {' · '}
-        <button className="font-mono text-cyan-300" onClick={() => setQuery('REC-2026-052')}>REC-2026-052</button>
+        <button className="font-mono text-brand-ink" onClick={() => setQuery('REC-2026-052')}>REC-2026-052</button>
       </p>
 
       {state === 'missing' && (
-        <div className="glass mt-6 border-red-400/25 p-6">
+        <div className="card mt-6 border-red-300/60 dark:border-red-400/25 p-6">
           <div className="flex items-center gap-3">
-            <ShieldAlert size={22} className="text-red-400" />
+            <ShieldAlert size={22} className="text-red-500" />
             <div>
-              <p className="font-bold text-white">No ledger record found</p>
-              <p className="mt-1 text-sm text-slate-400">
+              <p className="font-bold text-ink">No ledger record found</p>
+              <p className="mt-1 text-sm text-ink-2">
                 Nothing on the REI ledger matches “{query}”. A certificate that cannot be resolved
                 here has not been issued by a registered authority on this network.
               </p>
@@ -94,7 +94,7 @@ export default function VerifyPublic() {
         <div className="mt-6 flex flex-col gap-4 animate-fade-up">
           <div
             className={
-              'glass p-6 ' + (genuine ? 'border-emerald/30' : 'border-red-400/30')
+              'card p-6 ' + (genuine ? 'border-brand/30' : 'border-red-300/60 dark:border-red-400/30')
             }
           >
             <div className="flex flex-wrap items-center justify-between gap-5">
@@ -103,15 +103,15 @@ export default function VerifyPublic() {
                   className={
                     'grid h-14 w-14 place-items-center rounded-2xl ' +
                     (genuine
-                      ? 'bg-emerald/15 text-emerald-300'
-                      : 'bg-red-400/15 text-red-300')
+                      ? 'bg-brand-soft text-brand-ink'
+                      : 'bg-red-50 text-red-600 dark:bg-red-400/15 dark:text-red-300')
                   }
                 >
                   {genuine ? <ShieldCheck size={26} /> : <ShieldAlert size={26} />}
                 </span>
                 <div>
-                  <p className="font-mono text-lg font-bold text-white">{cert.id}</p>
-                  <p className="mt-1 text-sm text-slate-400">
+                  <p className="font-mono text-lg font-bold text-ink">{cert.id}</p>
+                  <p className="mt-1 text-sm text-ink-2">
                     {genuine
                       ? 'Authentic — registered on the REI ledger'
                       : 'Flagged — this certificate is not cleared for trade'}
@@ -121,7 +121,7 @@ export default function VerifyPublic() {
               <RiskDial score={cert.score} size={120} />
             </div>
 
-            <div className="mt-6 grid gap-4 border-t border-white/8 pt-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-6 grid gap-4 border-t border-line pt-5 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 ['Producer', cert.producerName],
                 ['Energy source', <SourceTag key="s" source={cert.source} />],
@@ -133,24 +133,24 @@ export default function VerifyPublic() {
                 ['Ledger tx', <Hash key="h" value={cert.txHash} chars={10} />],
               ].map(([k, v]) => (
                 <div key={k}>
-                  <p className="panel-title">{k}</p>
-                  <p className="mt-1 text-sm text-slate-200">{v}</p>
+                  <p className="label">{k}</p>
+                  <p className="mt-1 text-sm text-ink">{v}</p>
                 </div>
               ))}
             </div>
 
             <div className="mt-5 flex flex-wrap gap-2">
-              <button className="btn-ghost" onClick={() => downloadReport(cert, buildLedger(cert))}>
+              <button className="btn-outline" onClick={() => downloadReport(cert, buildLedger(cert))}>
                 <Download size={15} /> Download verification report
               </button>
-              <Link to="/login" className="btn-primary">
+              <Link to="/login" className="btn-brand">
                 Open in platform <ArrowRight size={15} />
               </Link>
             </div>
           </div>
 
-          <div className="glass p-6">
-            <h2 className="mb-4 text-base font-bold text-white">Certificate lifecycle</h2>
+          <div className="card p-6">
+            <h2 className="mb-4 text-base font-bold text-ink">Certificate lifecycle</h2>
             <Timeline events={buildLedger(cert)} />
           </div>
         </div>

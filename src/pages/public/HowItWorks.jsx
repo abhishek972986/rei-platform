@@ -87,46 +87,46 @@ const STEPS = [
 export default function HowItWorks() {
   return (
     <div className="mx-auto max-w-5xl px-5 py-14 lg:py-20">
-      <p className="panel-title">How it works</p>
-      <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-        Eleven steps from <span className="text-gradient">electron to evidence</span>
+      <p className="label">How it works</p>
+      <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+        Eleven steps from <span className="text-brand">electron to evidence</span>
       </h1>
-      <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-400">
+      <p className="mt-5 max-w-3xl text-lg leading-relaxed text-ink-2">
         Every certificate in the system follows the same pipeline. Nothing is issued on trust alone,
         and nothing leaves the pipeline without a ledger entry behind it.
       </p>
 
       <div className="relative mt-14">
-        <div className="absolute bottom-0 left-[19px] top-0 w-px bg-gradient-to-b from-emerald/50 via-cyan-electric/30 to-transparent sm:left-[23px]" />
+        <div className="absolute bottom-0 left-[19px] top-0 w-px bg-gradient-to-b from-brand/50 via-brand/25 to-transparent sm:left-[23px]" />
         <div className="flex flex-col gap-5">
           {STEPS.map((s, i) => (
             <div key={s.title} className="relative flex gap-5">
-              <div className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-cyan-electric/25 bg-navy-880 text-cyan-300 sm:h-12 sm:w-12">
+              <div className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-brand/25 bg-navy-880 text-brand-ink sm:h-12 sm:w-12">
                 <s.icon size={19} />
               </div>
-              <div className="glass glass-hover flex-1 p-5">
+              <div className="card card-hover flex-1 p-5">
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="font-mono text-xs text-slate-500">
+                  <span className="font-mono text-xs text-ink-3">
                     STEP {String(i + 1).padStart(2, '0')}
                   </span>
-                  <h3 className="text-base font-bold text-white">{s.title}</h3>
+                  <h3 className="text-base font-bold text-ink">{s.title}</h3>
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">{s.body}</p>
-                <span className="chip mt-3 border-white/10 bg-white/5 text-slate-300">{s.meta}</span>
+                <p className="mt-2 text-sm leading-relaxed text-ink-2">{s.body}</p>
+                <span className="tag mt-3">{s.meta}</span>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="glass mt-14 p-6">
-        <h2 className="text-lg font-bold text-white">Outcomes</h2>
+      <div className="card mt-14 p-6">
+        <h2 className="text-lg font-bold text-ink">Outcomes</h2>
         <div className="mt-4 grid gap-3 sm:grid-cols-4">
           {[
-            ['Approved', 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300'],
-            ['Rejected', 'border-red-400/30 bg-red-400/10 text-red-300'],
-            ['Suspended', 'border-amber-400/30 bg-amber-400/10 text-amber-300'],
-            ['False positive', 'border-slate-400/25 bg-slate-400/10 text-slate-300'],
+            ['Approved', 'border-emerald-400/30 bg-brand/10 text-brand-ink'],
+            ['Rejected', 'border-red-200 bg-red-50 text-red-600 dark:border-red-400/30 dark:bg-red-400/10 dark:text-red-300'],
+            ['Suspended', 'border-amber-200 bg-amber-50 text-amber-600 dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-300'],
+            ['False positive', 'border-line bg-surface-2 text-ink-2'],
           ].map(([t, c]) => (
             <div key={t} className={'rounded-xl border p-4 text-center text-sm font-semibold ' + c}>
               {t}
@@ -136,10 +136,10 @@ export default function HowItWorks() {
       </div>
 
       <div className="mt-10 flex flex-wrap gap-3">
-        <Link to="/login" className="btn-primary px-5 py-3">
+        <Link to="/login" className="btn-brand px-5 py-3">
           Run the workflow yourself <ArrowRight size={16} />
         </Link>
-        <Link to="/technology" className="btn-ghost px-5 py-3">
+        <Link to="/technology" className="btn-outline px-5 py-3">
           Technology stack
         </Link>
       </div>

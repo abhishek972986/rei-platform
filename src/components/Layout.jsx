@@ -144,7 +144,7 @@ export default function Layout() {
   }
 
   return (
-    <div className="flex min-h-screen">
+    <div className="dark app-shell flex min-h-screen">
       {/* Sidebar — desktop */}
       <aside className="fixed inset-y-0 left-0 z-40 hidden w-[264px] flex-col border-r border-white/8 bg-navy-900/80 backdrop-blur-xl lg:flex">
         <div className="px-5 py-5">

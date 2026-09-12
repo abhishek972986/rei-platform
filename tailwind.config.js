@@ -1,9 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
+        // Semantic tokens — defined as RGB triplets in index.css so the same
+        // class works in both themes without a `dark:` variant on every element.
+        bg: 'rgb(var(--c-bg) / <alpha-value>)',
+        'bg-soft': 'rgb(var(--c-bg-soft) / <alpha-value>)',
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        'surface-2': 'rgb(var(--c-surface-2) / <alpha-value>)',
+        line: 'rgb(var(--c-line) / <alpha-value>)',
+        ink: 'rgb(var(--c-ink) / <alpha-value>)',
+        'ink-2': 'rgb(var(--c-ink-2) / <alpha-value>)',
+        'ink-3': 'rgb(var(--c-ink-3) / <alpha-value>)',
+        brand: 'rgb(var(--c-brand) / <alpha-value>)',
+        'brand-ink': 'rgb(var(--c-brand-ink) / <alpha-value>)',
+        'brand-soft': 'rgb(var(--c-brand-soft) / <alpha-value>)',
+        forest: '#0b3a2c',
         navy: {
           950: '#05070f',
           900: '#080c18',
@@ -36,6 +51,8 @@ export default {
         55: '0.55',
         65: '0.65',
         85: '0.85',
+        88: '0.88',
+        90: '0.90',
       },
       fontFamily: {
         sans: ['Inter', 'Segoe UI', 'system-ui', 'sans-serif'],

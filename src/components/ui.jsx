@@ -19,11 +19,11 @@ export function SectionHead({ title, subtitle, right, icon: Icon }) {
   return (
     <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
       <div>
-        <h2 className="flex items-center gap-2 text-lg font-bold text-white">
+        <h2 className="flex items-center gap-2 text-lg font-bold text-ink">
           {Icon ? <Icon size={18} className="text-cyan-electric" /> : null}
           {title}
         </h2>
-        {subtitle ? <p className="mt-1 text-sm text-slate-400">{subtitle}</p> : null}
+        {subtitle ? <p className="mt-1 text-sm text-ink-3">{subtitle}</p> : null}
       </div>
       {right}
     </div>
@@ -49,10 +49,10 @@ export function Stat({ label, value, sub, icon: Icon, tone = 'cyan', trend, clas
       <div className="relative flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="panel-title">{label}</p>
-          <p className="mt-2 font-mono text-2xl font-bold tracking-tight text-white lg:text-[28px]">
+          <p className="mt-2 font-mono text-2xl font-bold tracking-tight text-ink lg:text-[28px]">
             {value}
           </p>
-          {sub ? <p className="mt-1.5 text-xs text-slate-400">{sub}</p> : null}
+          {sub ? <p className="mt-1.5 text-xs text-ink-3">{sub}</p> : null}
         </div>
         {Icon ? (
           <span className={'rounded-xl border bg-gradient-to-br p-2.5 ' + tones[tone]}>
@@ -79,9 +79,9 @@ export function Stat({ label, value, sub, icon: Icon, tone = 'cyan', trend, clas
 /* ---------------------------------------------------------------- */
 
 const RISK_STYLES = {
-  LOW: { chip: 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300', bar: 'bg-emerald-400', dot: '🟢' },
-  MEDIUM: { chip: 'border-amber-400/30 bg-amber-400/10 text-amber-300', bar: 'bg-amber-400', dot: '🟡' },
-  HIGH: { chip: 'border-red-400/30 bg-red-400/10 text-red-300', bar: 'bg-red-400', dot: '🔴' },
+  LOW: { chip: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-300', bar: 'bg-emerald-500', dot: '🟢' },
+  MEDIUM: { chip: 'border-amber-200 bg-amber-50 text-amber-600 dark:border-amber-400/35 dark:bg-amber-400/10 dark:text-amber-300', bar: 'bg-amber-500', dot: '🟡' },
+  HIGH: { chip: 'border-red-200 bg-red-50 text-red-600 dark:border-red-400/35 dark:bg-red-400/10 dark:text-red-300', bar: 'bg-red-500', dot: '🔴' },
 }
 
 export function RiskBadge({ score, showBar = false, size = 'md' }) {
@@ -92,9 +92,9 @@ export function RiskBadge({ score, showBar = false, size = 'md' }) {
       <div className="min-w-[108px]">
         <div className="mb-1 flex items-center justify-between gap-2">
           <span className={'chip ' + s.chip}>{level}</span>
-          <span className="font-mono text-sm font-bold text-white">{score}</span>
+          <span className="font-mono text-sm font-bold text-ink">{score}</span>
         </div>
-        <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+        <div className="h-1.5 overflow-hidden rounded-full bg-line">
           <div
             className={'h-full rounded-full transition-all duration-700 ' + s.bar}
             style={{ width: score + '%' }}
@@ -124,7 +124,7 @@ export function RiskDial({ score, size = 148 }) {
   return (
     <div className="relative" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} stroke="rgba(255,255,255,.08)" strokeWidth="10" fill="none" />
+        <circle cx={size / 2} cy={size / 2} r={r} stroke="rgb(var(--c-line))" strokeWidth="10" fill="none" />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -139,7 +139,7 @@ export function RiskDial({ score, size = 148 }) {
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="font-mono text-3xl font-extrabold text-white">{score}</span>
+        <span className="font-mono text-3xl font-extrabold text-ink">{score}</span>
         <span className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color }}>
           {level} RISK
         </span>
@@ -149,12 +149,12 @@ export function RiskDial({ score, size = 148 }) {
 }
 
 const STATUS_STYLES = {
-  [STATUS.ACTIVE]: 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300',
-  [STATUS.INVESTIGATING]: 'border-amber-400/30 bg-amber-400/10 text-amber-300',
-  [STATUS.SUSPICIOUS]: 'border-red-400/30 bg-red-400/10 text-red-300',
-  [STATUS.RETIRED]: 'border-slate-400/25 bg-slate-400/10 text-slate-300',
-  [STATUS.PENDING]: 'border-cyan-400/30 bg-cyan-400/10 text-cyan-300',
-  [STATUS.REJECTED]: 'border-red-500/40 bg-red-500/15 text-red-200',
+  [STATUS.ACTIVE]: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-300',
+  [STATUS.INVESTIGATING]: 'border-amber-200 bg-amber-50 text-amber-600 dark:border-amber-400/35 dark:bg-amber-400/10 dark:text-amber-300',
+  [STATUS.SUSPICIOUS]: 'border-red-200 bg-red-50 text-red-600 dark:border-red-400/35 dark:bg-red-400/10 dark:text-red-300',
+  [STATUS.RETIRED]: 'border-line bg-surface-2 text-ink-2',
+  [STATUS.PENDING]: 'border-sky-200 bg-sky-50 text-sky-700 dark:border-cyan-400/30 dark:bg-cyan-400/10 dark:text-cyan-300',
+  [STATUS.REJECTED]: 'border-red-300 bg-red-100 text-red-700 dark:border-red-500/40 dark:bg-red-500/15 dark:text-red-300',
 }
 const STATUS_DOTS = {
   [STATUS.ACTIVE]: 'bg-emerald-400',
@@ -175,10 +175,10 @@ export function StatusPill({ status }) {
 }
 
 const SEV_STYLES = {
-  Critical: 'border-red-500/40 bg-red-500/15 text-red-300',
-  High: 'border-orange-400/35 bg-orange-400/12 text-orange-300',
-  Medium: 'border-amber-400/30 bg-amber-400/10 text-amber-300',
-  Low: 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300',
+  Critical: 'border-red-300 bg-red-100 text-red-700 dark:border-red-500/40 dark:bg-red-500/15 dark:text-red-300',
+  High: 'border-orange-200 bg-orange-50 text-orange-600 dark:border-orange-400/35 dark:bg-orange-400/12 dark:text-orange-300',
+  Medium: 'border-amber-200 bg-amber-50 text-amber-600 dark:border-amber-400/35 dark:bg-amber-400/10 dark:text-amber-300',
+  Low: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-300',
 }
 export function SeverityPill({ severity }) {
   return <span className={'chip ' + (SEV_STYLES[severity] || SEV_STYLES.Low)}>{severity}</span>
@@ -186,21 +186,21 @@ export function SeverityPill({ severity }) {
 
 export function SourceTag({ source }) {
   const map = {
-    Solar: 'border-amber-400/30 bg-amber-400/10 text-amber-300',
-    Wind: 'border-cyan-400/30 bg-cyan-400/10 text-cyan-300',
-    Hydro: 'border-blue-400/30 bg-blue-400/10 text-blue-300',
-    Biomass: 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300',
-    Geothermal: 'border-orange-400/30 bg-orange-400/10 text-orange-300',
+    Solar: 'border-amber-200 bg-amber-50 text-amber-600 dark:border-amber-400/35 dark:bg-amber-400/10 dark:text-amber-300',
+    Wind: 'border-sky-200 bg-sky-50 text-sky-700 dark:border-cyan-400/30 dark:bg-cyan-400/10 dark:text-cyan-300',
+    Hydro: 'border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-400/30 dark:bg-blue-400/10 dark:text-blue-300',
+    Biomass: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-300',
+    Geothermal: 'border-orange-200 bg-orange-50 text-orange-600 dark:border-orange-400/35 dark:bg-orange-400/12 dark:text-orange-300',
   }
   return <span className={'chip ' + (map[source] || map.Solar)}>{source}</span>
 }
 
 export function Hash({ value, chars = 8, className = '' }) {
-  if (!value) return <span className="font-mono text-xs text-slate-500">—</span>
+  if (!value) return <span className="font-mono text-xs text-ink-3">—</span>
   return (
     <span
       title={value}
-      className={'font-mono text-xs text-cyan-300/80 ' + className}
+      className={'font-mono text-xs text-sky-700 dark:text-cyan-300/80 ' + className}
     >
       {value.slice(0, chars + 2)}…{value.slice(-4)}
     </span>
@@ -214,7 +214,7 @@ export function Hash({ value, chars = 8, className = '' }) {
 export function SearchInput({ value, onChange, placeholder = 'Search…', className = '' }) {
   return (
     <div className={'relative ' + className}>
-      <Search size={15} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+      <Search size={15} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-3" />
       <input
         className="input pl-9"
         value={value}
@@ -239,7 +239,7 @@ export function Select({ value, onChange, options, className = '' }) {
           </option>
         ))}
       </select>
-      <ChevronDown size={15} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500" />
+      <ChevronDown size={15} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ink-3" />
     </div>
   )
 }
@@ -249,7 +249,7 @@ export function Field({ label, hint, children }) {
     <label className="block">
       <span className="panel-title">{label}</span>
       <div className="mt-1.5">{children}</div>
-      {hint ? <span className="mt-1 block text-[11px] text-slate-500">{hint}</span> : null}
+      {hint ? <span className="mt-1 block text-[11px] text-ink-3">{hint}</span> : null}
     </label>
   )
 }
@@ -262,8 +262,8 @@ export function Table({ columns, rows, onRowClick, empty = 'No records match the
   if (!rows.length) {
     return (
       <div className="flex flex-col items-center justify-center gap-3 py-16 text-center">
-        <Inbox size={28} className="text-slate-600" />
-        <p className="text-sm text-slate-500">{empty}</p>
+        <Inbox size={28} className="text-ink-3" />
+        <p className="text-sm text-ink-3">{empty}</p>
       </div>
     )
   }
@@ -276,7 +276,7 @@ export function Table({ columns, rows, onRowClick, empty = 'No records match the
               <th
                 key={c.key}
                 className={
-                  'whitespace-nowrap px-3 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 ' +
+                  'whitespace-nowrap px-3 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-3 ' +
                   (c.align === 'right' ? 'text-right' : '')
                 }
               >
@@ -332,8 +332,8 @@ export function Modal({ open, onClose, title, subtitle, children, footer, wide }
       >
         <div className="mb-5 flex items-start justify-between gap-4">
           <div>
-            <h3 className="text-lg font-bold text-white">{title}</h3>
-            {subtitle ? <p className="mt-1 text-sm text-slate-400">{subtitle}</p> : null}
+            <h3 className="text-lg font-bold text-ink">{title}</h3>
+            {subtitle ? <p className="mt-1 text-sm text-ink-3">{subtitle}</p> : null}
           </div>
           <button onClick={onClose} className="rounded-lg p-1.5 text-slate-400 hover:bg-white/10 hover:text-white">
             <X size={18} />
@@ -381,12 +381,12 @@ export function Progress({ value, tone = 'cyan', label }) {
   return (
     <div>
       {label ? (
-        <div className="mb-1 flex justify-between text-xs text-slate-400">
+        <div className="mb-1 flex justify-between text-xs text-ink-3">
           <span>{label}</span>
-          <span className="font-mono text-slate-300">{value}%</span>
+          <span className="font-mono text-ink-2">{value}%</span>
         </div>
       ) : null}
-      <div className="h-2 overflow-hidden rounded-full bg-white/8">
+      <div className="h-2 overflow-hidden rounded-full bg-line">
         <div
           className={'h-full rounded-full transition-all duration-1000 ' + tones[tone]}
           style={{ width: Math.min(100, value) + '%' }}

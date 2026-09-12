@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {
-  Zap,
   ShieldCheck,
   Landmark,
   Stamp,
@@ -15,6 +14,7 @@ import {
 } from 'lucide-react'
 import { useStore } from '../../data/store'
 import { ROLES, ROLE_INFO } from '../../data/seed'
+import { Brand } from './PublicShell'
 
 const ROLE_CARDS = [
   { role: ROLES.REGULATOR, icon: Landmark },
@@ -57,28 +57,22 @@ export default function Login() {
   return (
     <div className="grid min-h-screen lg:grid-cols-[1.05fr_1fr]">
       {/* left — brand panel */}
-      <div className="relative hidden overflow-hidden border-r border-white/8 bg-navy-900/50 lg:flex lg:flex-col lg:justify-between lg:p-12">
+      <div className="relative hidden overflow-hidden border-r border-line bg-surface-2 lg:flex lg:flex-col lg:justify-between lg:p-12">
         <div className="pointer-events-none absolute inset-0 grid-noise opacity-40" />
-        <div className="pointer-events-none absolute -left-20 top-20 h-72 w-72 rounded-full bg-emerald/15 blur-3xl" />
-        <div className="pointer-events-none absolute -right-10 bottom-10 h-72 w-72 rounded-full bg-cyan-electric/12 blur-3xl" />
+        <div className="pointer-events-none absolute -left-20 top-20 h-72 w-72 rounded-full bg-brand-soft blur-3xl" />
+        <div className="pointer-events-none absolute -right-10 bottom-10 h-72 w-72 rounded-full bg-brand/10 blur-3xl" />
 
         <Link to="/" className="relative flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-emerald to-cyan-electric shadow-glow-emerald">
-            <Zap size={20} className="text-navy-950" strokeWidth={2.6} />
-          </div>
-          <div className="leading-none">
-            <p className="text-[13px] font-extrabold tracking-tight text-white">RENEWABLE ENERGY</p>
-            <p className="text-[13px] font-extrabold tracking-[0.22em] text-gradient">INTELLIGENCE</p>
-          </div>
+          <Brand />
         </Link>
 
         <div className="relative max-w-md">
-          <h2 className="text-3xl font-extrabold leading-tight text-white">
+          <h2 className="text-3xl font-extrabold leading-tight text-ink">
             Trust every megawatt.
             <br />
-            <span className="text-gradient">Verify every certificate.</span>
+            <span className="text-brand">Verify every certificate.</span>
           </h2>
-          <p className="mt-4 text-sm leading-relaxed text-slate-400">
+          <p className="mt-4 text-sm leading-relaxed text-ink-2">
             Sign in to the intelligence platform. Your role determines the modules you can reach, the
             actions you can take and the records you can see.
           </p>
@@ -88,8 +82,8 @@ export default function Login() {
               [Lock, 'AES-256 encrypted session data'],
               [Fingerprint, 'Every action written to the audit ledger'],
             ].map(([I, t]) => (
-              <div key={t} className="flex items-center gap-3 text-sm text-slate-300">
-                <span className="grid h-8 w-8 place-items-center rounded-lg border border-white/10 bg-white/5 text-emerald-400">
+              <div key={t} className="flex items-center gap-3 text-sm text-ink-2">
+                <span className="grid h-8 w-8 place-items-center rounded-lg border border-line bg-surface-2 text-brand">
                   <I size={15} />
                 </span>
                 {t}
@@ -98,7 +92,7 @@ export default function Login() {
           </div>
         </div>
 
-        <p className="relative text-xs text-slate-600">
+        <p className="relative text-xs text-ink-3">
           Demonstration environment · synthetic data · no live registry is contacted
         </p>
       </div>
@@ -107,20 +101,17 @@ export default function Login() {
       <div className="flex items-center justify-center px-5 py-10 sm:px-10">
         <div className="w-full max-w-md">
           <Link to="/" className="mb-8 flex items-center gap-2.5 lg:hidden">
-            <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-emerald to-cyan-electric">
-              <Zap size={18} className="text-navy-950" strokeWidth={2.6} />
-            </div>
-            <p className="text-sm font-extrabold tracking-[0.18em] text-white">REI PLATFORM</p>
+            <Brand />
           </Link>
 
-          <div className="mb-6 flex gap-1 rounded-xl border border-white/10 bg-white/[0.03] p-1">
+          <div className="mb-6 flex gap-1 rounded-xl border border-line bg-surface-2 p-1">
             {['login', 'register'].map((m) => (
               <button
                 key={m}
                 onClick={() => setMode(m)}
                 className={
                   'flex-1 rounded-lg px-3 py-2 text-sm font-semibold capitalize transition ' +
-                  (mode === m ? 'bg-white/10 text-white' : 'text-slate-400 hover:text-slate-200')
+                  (mode === m ? 'bg-surface text-ink shadow-sm' : 'text-ink-2 hover:text-ink')
                 }
               >
                 {m === 'login' ? 'Sign in' : 'Register'}
@@ -128,10 +119,10 @@ export default function Login() {
             ))}
           </div>
 
-          <h1 className="text-2xl font-bold text-white">
+          <h1 className="text-2xl font-bold text-ink">
             {mode === 'login' ? 'Access your dashboard' : 'Create a platform account'}
           </h1>
-          <p className="mt-1.5 text-sm text-slate-400">
+          <p className="mt-1.5 text-sm text-ink-2">
             {mode === 'login'
               ? 'Select your role to enter the matching workspace.'
               : 'Registration is reviewed by the regulator before activation.'}
@@ -139,7 +130,7 @@ export default function Login() {
 
           <form onSubmit={submit} className="mt-7 flex flex-col gap-4">
             <div>
-              <p className="panel-title mb-2">Role-based login</p>
+              <p className="label mb-2">Role-based login</p>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {ROLE_CARDS.map((r) => {
                   const active = role === r.role
@@ -151,8 +142,8 @@ export default function Login() {
                       className={
                         'flex flex-col items-start gap-2 rounded-xl border p-3 text-left transition ' +
                         (active
-                          ? 'border-cyan-electric/50 bg-cyan-electric/10 shadow-glow'
-                          : 'border-white/10 bg-white/[0.03] hover:border-white/20')
+                          ? 'border-brand/50 bg-brand-soft shadow-[0_8px_20px_-10px_rgb(var(--c-brand)/0.7)]'
+                          : 'border-line bg-surface-2 hover:border-brand/30')
                       }
                     >
                       <r.icon
@@ -162,7 +153,7 @@ export default function Login() {
                       <span
                         className={
                           'text-[11px] font-semibold leading-tight ' +
-                          (active ? 'text-white' : 'text-slate-400')
+                          (active ? 'text-ink' : 'text-ink-2')
                         }
                       >
                         {r.role}
@@ -171,23 +162,23 @@ export default function Login() {
                   )
                 })}
               </div>
-              <p className="mt-2 text-xs leading-relaxed text-slate-500">
+              <p className="mt-2 text-xs leading-relaxed text-ink-3">
                 {ROLE_INFO[role].blurb}
               </p>
             </div>
 
             {mode === 'register' && (
               <label className="block">
-                <span className="panel-title">Organisation</span>
-                <input className="input mt-1.5" defaultValue={ROLE_INFO[role].org} />
+                <span className="label">Organisation</span>
+                <input className="field mt-1.5" defaultValue={ROLE_INFO[role].org} />
               </label>
             )}
 
             <label className="block">
-              <span className="panel-title">Email address</span>
+              <span className="label">Email address</span>
               <input
                 type="email"
-                className="input mt-1.5"
+                className="field mt-1.5"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@organisation.org"
@@ -195,10 +186,10 @@ export default function Login() {
             </label>
 
             <label className="block">
-              <span className="panel-title">Password</span>
+              <span className="label">Password</span>
               <input
                 type="password"
-                className="input mt-1.5"
+                className="field mt-1.5"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
@@ -211,7 +202,7 @@ export default function Login() {
               </p>
             ) : null}
 
-            <button className="btn-primary h-12" disabled={busy}>
+            <button className="btn-brand h-12" disabled={busy}>
               {busy ? (
                 <>
                   <Loader2 size={16} className="animate-spin" /> Authenticating…
@@ -224,13 +215,13 @@ export default function Login() {
               )}
             </button>
 
-            <p className="text-center text-xs text-slate-500">
+            <p className="text-center text-xs text-ink-3">
               Demo credentials are pre-filled. Any password of 4+ characters works.
             </p>
           </form>
 
-          <p className="mt-8 text-center text-xs text-slate-500">
-            <Link to="/" className="hover:text-cyan-electric">
+          <p className="mt-8 text-center text-xs text-ink-3">
+            <Link to="/" className="hover:text-brand">
               ← Back to the public site
             </Link>
           </p>

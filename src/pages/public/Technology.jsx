@@ -62,31 +62,31 @@ const STACK = [
 export default function Technology() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-14 lg:py-20">
-      <p className="panel-title">Technology</p>
-      <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-        Built on <span className="text-gradient">four layers of trust</span>
+      <p className="label">Technology</p>
+      <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+        Built on <span className="text-brand">four layers of trust</span>
       </h1>
-      <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-400">
+      <p className="mt-5 max-w-3xl text-lg leading-relaxed text-ink-2">
         Intelligence catches what humans miss. The ledger makes sure nobody can rewrite what was
         caught.
       </p>
 
       <div className="mt-10 grid gap-4 md:grid-cols-2">
         {PILLARS.map((p) => (
-          <div key={p.title} className="glass glass-hover p-6">
+          <div key={p.title} className="card card-hover p-6">
             <div className="flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-xl border border-cyan-electric/20 bg-cyan-electric/10 text-cyan-300">
+              <span className="grid h-11 w-11 place-items-center rounded-xl border border-brand/20 bg-brand-soft text-brand-ink">
                 <p.icon size={20} />
               </span>
               <div>
-                <h3 className="font-bold text-white">{p.title}</h3>
-                <p className="text-xs text-slate-400">{p.tagline}</p>
+                <h3 className="font-bold text-ink">{p.title}</h3>
+                <p className="text-xs text-ink-2">{p.tagline}</p>
               </div>
             </div>
             <ul className="mt-4 flex flex-col gap-2">
               {p.points.map((pt) => (
-                <li key={pt} className="flex gap-2.5 text-sm text-slate-400">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
+                <li key={pt} className="flex gap-2.5 text-sm text-ink-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
                   {pt}
                 </li>
               ))}
@@ -96,40 +96,40 @@ export default function Technology() {
       </div>
 
       <section className="mt-16">
-        <h2 className="text-2xl font-bold text-white">Reference architecture</h2>
+        <h2 className="text-2xl font-bold text-ink">Reference architecture</h2>
         <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {STACK.map((s) => (
-            <div key={s.layer} className="glass p-5">
+            <div key={s.layer} className="card p-5">
               <div className="flex items-center gap-2.5">
-                <s.icon size={17} className="text-emerald-400" />
-                <p className="panel-title !tracking-[0.14em]">{s.layer}</p>
+                <s.icon size={17} className="text-brand" />
+                <p className="label !tracking-[0.14em]">{s.layer}</p>
               </div>
-              <p className="mt-2.5 text-sm font-semibold text-white">{s.tech}</p>
-              <p className="mt-1 text-xs text-slate-400">{s.note}</p>
+              <p className="mt-2.5 text-sm font-semibold text-ink">{s.tech}</p>
+              <p className="mt-1 text-xs text-ink-2">{s.note}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="mt-16 grid gap-4 lg:grid-cols-2">
-        <div className="glass p-6">
-          <h3 className="font-bold text-white">Model ensemble</h3>
-          <p className="mt-1 text-xs text-slate-400">
+        <div className="card p-6">
+          <h3 className="font-bold text-ink">Model ensemble</h3>
+          <p className="mt-1 text-xs text-ink-2">
             {modelMetrics.modelVersion} · trained on{' '}
             {modelMetrics.samplesTrained.toLocaleString()} certificate records
           </p>
           <div className="mt-4 flex flex-col gap-3">
             {modelMetrics.ensemble.map((m) => (
-              <div key={m.name} className="rounded-xl border border-white/8 bg-white/[0.03] p-3.5">
+              <div key={m.name} className="rounded-xl border border-line bg-surface-2 p-3.5">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="text-sm font-semibold text-white">{m.name}</p>
-                  <span className="font-mono text-xs text-cyan-300">{m.accuracy}%</span>
+                  <p className="text-sm font-semibold text-ink">{m.name}</p>
+                  <span className="font-mono text-xs text-brand-ink">{m.accuracy}%</span>
                 </div>
-                <p className="mt-0.5 text-xs text-slate-400">{m.task}</p>
-                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
-                  <div className="h-full rounded-full bg-cyan-electric/70" style={{ width: m.weight * 2.6 + '%' }} />
+                <p className="mt-0.5 text-xs text-ink-2">{m.task}</p>
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-surface-2">
+                  <div className="h-full rounded-full bg-brand/70" style={{ width: m.weight * 2.6 + '%' }} />
                 </div>
-                <p className="mt-1 text-[10px] uppercase tracking-wider text-slate-500">
+                <p className="mt-1 text-[10px] uppercase tracking-wider text-ink-3">
                   Ensemble weight {m.weight}%
                 </p>
               </div>
@@ -137,9 +137,9 @@ export default function Technology() {
           </div>
         </div>
 
-        <div className="glass p-6">
-          <h3 className="font-bold text-white">Ledger network</h3>
-          <p className="mt-1 text-xs text-slate-400">{networkStats.chain}</p>
+        <div className="card p-6">
+          <h3 className="font-bold text-ink">Ledger network</h3>
+          <p className="mt-1 text-xs text-ink-2">{networkStats.chain}</p>
           <div className="mt-4 grid grid-cols-2 gap-3">
             {[
               ['Consensus', networkStats.consensus],
@@ -149,15 +149,15 @@ export default function Technology() {
               ['Smart contracts', networkStats.contractsDeployed],
               ['Immutable records', networkStats.immutableRecords.toLocaleString()],
             ].map(([k, v]) => (
-              <div key={k} className="rounded-xl border border-white/8 bg-white/[0.03] p-3.5">
-                <p className="panel-title">{k}</p>
-                <p className="mt-1 font-mono text-sm font-semibold text-white">{v}</p>
+              <div key={k} className="rounded-xl border border-line bg-surface-2 p-3.5">
+                <p className="label">{k}</p>
+                <p className="mt-1 font-mono text-sm font-semibold text-ink">{v}</p>
               </div>
             ))}
           </div>
-          <div className="mt-4 rounded-xl border border-emerald/20 bg-emerald/8 p-4">
-            <p className="text-sm font-semibold text-emerald-300">ERC-721 compatible</p>
-            <p className="mt-1 text-xs leading-relaxed text-slate-400">
+          <div className="mt-4 rounded-xl border border-brand/20 bg-brand-soft p-4">
+            <p className="text-sm font-semibold text-brand-ink">ERC-721 compatible</p>
+            <p className="mt-1 text-xs leading-relaxed text-ink-2">
               Certificates map one-to-one onto non-fungible tokens, so the registry can settle on a
               permissioned Fabric channel or a public EVM chain without changing the data model.
             </p>
@@ -166,7 +166,7 @@ export default function Technology() {
       </section>
 
       <div className="mt-12">
-        <Link to="/login" className="btn-primary px-5 py-3">
+        <Link to="/login" className="btn-brand px-5 py-3">
           Access the platform <ArrowRight size={16} />
         </Link>
       </div>
