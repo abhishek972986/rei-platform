@@ -19,55 +19,9 @@ The application includes:
 
 ## Architecture overview
 
-```mermaid
-flowchart LR
-    G["1. Generation<br/>Renewable energy is generated and recorded."] --> I["2. Issuance<br/>RECs are issued based on verified generation data."]
-    I --> T["3. Transfer<br/>Certificates are traded and ownership is updated."]
-    T --> V["4. Verification<br/>AI detects anomalies and calculates risk scores."]
-    V --> R["5. Retirement<br/>RECs are retired and finalised for compliance."]
+![REI Architecture](assets/architecture.svg)
 
-    subgraph DS["Data Sources"]
-        D1["Generation Data"]
-        D2["Issuance Records"]
-        D3["Transfer Logs"]
-        D4["Retirement Events"]
-    end
-
-    subgraph RP["REI Platform"]
-        A1["AI Fraud Detection<br/>Explainable Scoring"]
-        A2["Blockchain Ledger<br/>Lifecycle Tracking"]
-        A3["Role-Based Access<br/>Enterprise Dashboard"]
-        A4["Reports & Analytics<br/>Compliance & Investigation"]
-    end
-
-    subgraph OUT["Outputs"]
-        O1["Verified Certificates"]
-        O2["Fraud Alerts"]
-        O3["Audit Reports"]
-        O4["Full Traceability"]
-    end
-
-    subgraph US["Users & Stakeholders"]
-        U1["Regulator"]
-        U2["Issuing Authority"]
-        U3["Energy Producer"]
-        U4["Corporate Buyer"]
-        U5["Auditor"]
-    end
-
-    D1 --> RP
-    D2 --> RP
-    D3 --> RP
-    D4 --> RP
-
-    A1 --> O2
-    A2 --> O4
-    A3 --> O1
-    A4 --> O3
-
-    RP --> US
-    RP --> OUT
-```
+This architecture captures the full REC lifecycle: generation, issuance, transfer, verification, and retirement, with stakeholder roles and platform outputs connected through the REI system.
 
 ## Core features
 
